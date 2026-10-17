@@ -12,9 +12,7 @@ The project focuses on secure content delivery, restricting direct public access
 
 ## Architecture
 
-
-
-The editable architecture diagram is available here:docs/architecture/AWS%20Static%20Website%20Hosting.drawio
+The editable architecture diagram is available here: [AWS Static Website Hosting.drawio](docs/architecture/AWS%20Static%20Website%20Hosting.drawio).
 
 ### Request Flow
 
