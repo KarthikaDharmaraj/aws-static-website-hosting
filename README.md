@@ -14,7 +14,7 @@ The project focuses on secure content delivery, restricting direct public access
 
 
 
-The editable architecture diagram is available here: [architecture.drawio](docs/architecture/architecture.drawio).
+The editable architecture diagram is available here: docs/architecture/architecture.drawio.
 
 ### Request Flow
 
