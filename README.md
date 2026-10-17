@@ -2,98 +2,91 @@
 
 ## Project Overview
 
-This project demonstrates how to host a personal portfolio website using Amazon S3 and Amazon CloudFront.
+This project demonstrates how to host a static personal portfolio website using Amazon S3 and Amazon CloudFront.
 
-The goal was to build a simple, secure and cost-conscious website while gaining hands-on experience with AWS storage, content delivery, HTTPS and access control.
+The project focuses on secure content delivery, restricting direct public access to the S3 bucket, and documenting the architecture and deployment process.
 
-**Live Website:** `https://YOUR_CLOUDFRONT_DOMAIN`
+**Project type:** AWS hands-on project
+**Services:** Amazon S3, Amazon CloudFront, Origin Access Control (OAC)
+**Location:** AWS Europe (Frankfurt), if applicable to the deployed resources
 
 ## Architecture
 
-![AWS Static Website Hosting Architecture](docs/architecture/architecture.png)
 
-**Architecture source:** [Editable draw.io diagram](docs/architecture/architecture.drawio)
+
+The editable architecture diagram is available here: [architecture.drawio](docs/architecture/architecture.drawio).
 
 ### Request Flow
 
-1. A visitor opens the portfolio website using the CloudFront distribution URL.
-2. CloudFront delivers the website over HTTPS.
-3. When content is needed from the origin, CloudFront requests it from the S3 bucket.
-4. Origin Access Control (OAC) signs requests from CloudFront to S3.
-5. The S3 bucket policy permits the configured CloudFront distribution to read website objects.
+1. A visitor opens the website through the CloudFront distribution URL.
+2. CloudFront receives the HTTPS request.
+3. CloudFront uses Origin Access Control (OAC) to authenticate requests to the private S3 origin.
+4. The S3 bucket policy allows the required read access from the intended CloudFront distribution.
+5. S3 returns the website files through CloudFront to the visitor.
 
 ## AWS Services Used
 
-| Service | Purpose |
-|---|---|
-| Amazon S3 | Stores the website's static files |
-| Amazon CloudFront | Distributes website content and supports HTTPS |
-| Origin Access Control (OAC) | Secures access from CloudFront to the S3 origin |
-| AWS IAM and S3 bucket policy | Control permissions for accessing website objects |
+- **Amazon S3:** Stores the static website files.
+- **Amazon CloudFront:** Delivers website content through a content delivery network.
+- **Origin Access Control (OAC):** Allows CloudFront to securely access the S3 origin.
+- **S3 bucket policy:** Restricts object access to the intended CloudFront distribution.
 
-## Implementation Steps
+## Implementation
 
-1. Created an S3 bucket and uploaded the portfolio website's `index.html` file.
-2. Created a CloudFront distribution using the regular S3 bucket origin.
-3. Configured Origin Access Control (OAC) for requests to S3.
-4. Configured the S3 bucket policy to allow the CloudFront distribution to read website objects.
-5. Set `index.html` as the CloudFront default root object.
-6. Configured the viewer protocol policy to redirect HTTP requests to HTTPS.
-7. Tested the website through the CloudFront distribution domain.
+1. Created an S3 bucket to store the website files.
+2. Uploaded the website's `index.html` file.
+3. Created a CloudFront distribution using the regular S3 bucket origin.
+4. Configured Origin Access Control with request signing enabled.
+5. Configured the S3 bucket policy to allow the intended CloudFront distribution to retrieve objects.
+6. Set `index.html` as the default root object.
+7. Configured HTTP-to-HTTPS redirection.
+8. Tested the website through the CloudFront distribution URL.
 
-## Security Considerations
+## Security Decisions
 
 - Keep S3 Block Public Access enabled.
-- Use Origin Access Control to restrict origin access to CloudFront.
-- Grant only the S3 permissions required to read website objects.
-- Avoid granting anonymous users public read access to the bucket.
-- Do not commit AWS access keys, secret keys, passwords or other credentials to GitHub.
+- Use CloudFront OAC instead of granting anonymous public access to the S3 bucket.
+- Limit the bucket policy to the intended CloudFront distribution.
+- Follow least-privilege access principles.
+- Never commit AWS access keys, passwords, or other credentials to GitHub.
 
-## Testing
+## Deployment Screenshots
 
-- Verified that the website loads through the CloudFront distribution.
-- Verified that the CloudFront URL uses HTTPS.
-- Check that all four S3 Block Public Access settings remain enabled.
-- Check that the bucket policy restricts read access to the intended CloudFront distribution.
-- Test the direct S3 object URL in a signed-out browser session and confirm that anonymous access is denied.
+### 1. CloudFront Distribution
 
-Record the actual results of the security checks before marking them complete.
+![CloudFront Distribution](screenshots/01-cloudfront-distribution.png)
 
-## Repository Structure
 
-```text
-aws-static-website-hosting/
-├── README.md
-├── website/
-│   └── index.html
-└── docs/
-    └── architecture/
-        ├── README.md
-        ├── architecture.drawio
-        └── architecture.png
-```
+### 2. CloudFront Origin Access Control
 
-## Cost Management
+![CloudFront OAC](screenshots/02-cloudfront-oac.png)
 
-- Review AWS billing and available credits regularly.
-- Check CloudFront and S3 usage to avoid unexpected charges.
-- Remove unused resources when they are no longer needed.
-- Before deleting resources, review the impact on the live website.
+### 3. S3 Block Public Access
 
-## What I Learned
+![S3 Block Public Access](screenshots/03-s3-block-public-access.png)
 
-- Hosting static website files with Amazon S3.
-- Using CloudFront to deliver content over HTTPS.
-- Configuring Origin Access Control for a private S3 origin.
-- Applying least-privilege access through an S3 bucket policy.
-- Testing and documenting an AWS deployment.
+### 4. S3 Bucket Policy
 
-## Future Improvements
+![S3 Bucket Policy](screenshots/04-s3-oac-bucket-policy.png)
 
-- Configure a custom domain and HTTPS certificate, if needed.
-- Add automated deployment using GitHub Actions.
-- Improve website monitoring and operational documentation.
+## Cost Management and Cleanup
 
----
+AWS resources may incur charges depending on usage and current pricing.
 
-**Project status:** Deployed and accessible through Amazon CloudFront. Security checks should be documented according to their verified results.
+- Review AWS Billing and Cost Management regularly.
+- Remove resources that are no longer needed.
+- Before deleting the CloudFront distribution, save the required screenshots and confirm whether you still need the CloudFront URL.
+- Delete the S3 bucket only after confirming that its contents are no longer needed.
+
+Deleting the CloudFront distribution will stop the distribution URL from serving the website.
+
+## Skills Demonstrated
+
+- Static website hosting with Amazon S3
+- Content delivery with Amazon CloudFront
+- Origin Access Control configuration
+- S3 bucket policy configuration
+- Basic cloud security and least-privilege access
+- AWS deployment testing and technical documentation
+- GitHub repository management
+
