@@ -52,7 +52,7 @@ The editable architecture diagram is available here: [AWS Static Website Hosting
 
 ### 1. CloudFront Distribution
 
-![CloudFront Distribution](screenshots/01-cloudfront-distribution.png)
+![CloudFront Distribution](screenshots/01cloudfront-distribution.png)
 
 
 ### 2. CloudFront Origin Access Control
