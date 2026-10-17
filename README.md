@@ -11,7 +11,7 @@ The project focuses on secure content delivery, restricting direct public access
 **Location:** AWS Europe (Frankfurt), if applicable to the deployed resources
 
 ## Architecture
-
+The architecture diagram is available here:![AWS Static Website Hosting Architecture](docs/architecture/AWS%20Static%20Website%20Hosting.png)
 The editable architecture diagram is available here: [AWS Static Website Hosting.drawio](docs/architecture/AWS%20Static%20Website%20Hosting.drawio).
 
 ### Request Flow
