@@ -1,1 +1,775 @@
-my profile
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Karthika Dharmaraj | Cloud Engineering</title>
+  <meta name="description" content="Karthika Dharmaraj — AWS Certified Solutions Architect focused on cloud engineering, secure infrastructure, automation and reliable AWS solutions.">
+
+  <style>
+    :root {
+      --navy: #101d35;
+      --navy-light: #1b3155;
+      --blue: #477cf5;
+      --blue-light: #eaf0ff;
+      --background: #f5f7fc;
+      --white: #ffffff;
+      --text: #25334a;
+      --muted: #69778d;
+      --border: #e0e6f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(16, 29, 53, 0.97);
+      color: white;
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 12px 0;
+    }
+
+    .brand {
+      color: white;
+      font-weight: bold;
+      font-size: 17px;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #dce6ff;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--navy), #203e70);
+      color: white;
+      padding: 100px 0 90px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      right: -100px;
+      top: 50px;
+      box-shadow: 0 0 0 45px rgba(255,255,255,0.025),
+                  0 0 0 90px rgba(255,255,255,0.02);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 790px;
+    }
+
+    .eyebrow {
+      color: #a9c4ff;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(39px, 6vw, 65px);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin: 20px 0;
+    }
+
+    .hero h2 {
+      font-size: clamp(19px, 3vw, 27px);
+      color: #dbe6ff;
+      font-weight: normal;
+      line-height: 1.5;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin-top: 22px;
+      color: #e0e8f8;
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 7px;
+      background: var(--blue);
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .button:hover {
+      background: #3466d7;
+    }
+
+    .button-outline {
+      background: transparent;
+      border: 1px solid #8096ba;
+    }
+
+    .button-outline:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    section {
+      padding: 72px 0;
+      scroll-margin-top: 75px;
+    }
+
+    .section-heading {
+      max-width: 730px;
+      margin-bottom: 30px;
+    }
+
+    .section-label {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(27px, 4vw, 35px);
+      line-height: 1.3;
+      margin: 9px 0 12px;
+    }
+
+    .section-heading p,
+    .muted {
+      color: var(--muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .panel,
+    .project-card,
+    .skill-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px;
+    }
+
+    .panel p + p {
+      margin-top: 15px;
+    }
+
+    .focus-panel {
+      background: var(--navy);
+      color: white;
+      border-radius: 12px;
+      padding: 27px;
+    }
+
+    .focus-panel h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .focus-list {
+      list-style: none;
+    }
+
+    .focus-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      color: #e0e8f8;
+      font-size: 14px;
+    }
+
+    .focus-list li:last-child {
+      border-bottom: none;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .cert-card {
+      border-top: 4px solid var(--blue);
+    }
+
+    .cert-mark {
+      display: inline-block;
+      color: var(--blue);
+      background: var(--blue-light);
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .cert-card h3 {
+      color: var(--navy);
+      font-size: 19px;
+      line-height: 1.45;
+      margin-bottom: 9px;
+    }
+
+    .cert-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .skill-card h3 {
+      color: var(--navy);
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .skill-tags span {
+      background: var(--blue-light);
+      color: #244b98;
+      padding: 5px 9px;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-number {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .project-card h3 {
+      color: var(--navy);
+      font-size: 19px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .status {
+      align-self: flex-start;
+      margin: 17px 0 12px;
+      border-radius: 5px;
+      padding: 5px 9px;
+      background: var(--blue-light);
+      color: #244b98;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .project-card .project-note {
+      margin-top: auto;
+      padding-top: 12px;
+      font-size: 12px;
+    }
+
+    .vision {
+      background: #eaf0ff;
+    }
+
+    .vision-panel {
+      max-width: 850px;
+      padding: 35px;
+      border-left: 4px solid var(--blue);
+      background: white;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .vision-panel p {
+      font-size: 17px;
+    }
+
+    .vision-panel p + p {
+      margin-top: 15px;
+    }
+
+    .professional-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .professional-links a {
+      color: var(--blue);
+      font-weight: bold;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .professional-links a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #0b1629;
+      color: #d4deed;
+      padding: 25px 5%;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    footer p + p {
+      margin-top: 5px;
+      color: #a9b8d0;
+    }
+
+    @media (max-width: 800px) {
+      .about-grid,
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .focus-panel {
+        grid-column: 1 / -1;
+      }
+
+      .hero {
+        padding: 75px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .navbar {
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .about-grid,
+      .cert-grid,
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .focus-panel {
+        grid-column: auto;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .panel,
+      .project-card,
+      .skill-card {
+        padding: 21px;
+      }
+
+      .vision-panel {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="#home">Karthika Dharmaraj</a>
+
+      <nav aria-label="Main navigation">
+        <a href="#about">Profile</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#projects">Projects</a>
+        <a href="#vision">My Direction</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div class="eyebrow">Cloud Engineering · AWS · Problem Solving</div>
+
+        <h1>Karthika Dharmaraj</h1>
+
+        <h2>Cloud Engineer | AWS Solutions Architecture | Cloud Infrastructure</h2>
+
+        <p>
+          Building a career around secure cloud architecture, reliable
+          infrastructure and thoughtful engineering. I combine an
+          engineering education with AWS certifications and a commitment
+          to turning technical knowledge into practical solutions.
+        </p>
+
+        <p>Based in Luxembourg, Europe.</p>
+
+        <div class="hero-actions">
+          <a class="button" href="#projects">Explore My Work</a>
+          <a class="button button-outline" href="#about">My Professional Profile</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Professional Profile</div>
+          <h2>Engineering with purpose.</h2>
+          <p>
+            A strong technical foundation, a practical mindset and a
+            commitment to continuous improvement.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel">
+            <p>
+              I hold a degree in Electronics and Communication Engineering
+              and have built a foundation in cloud architecture through
+              AWS certification and independent study.
+            </p>
+
+            <p>
+              My professional interests include cloud infrastructure,
+              networking, security, automation and troubleshooting.
+              I enjoy understanding how systems work, how components
+              connect and how technical decisions affect reliability,
+              performance and cost.
+            </p>
+
+            <p>
+              My focus is on developing the practical engineering skills
+              needed to design, implement, document and support dependable
+              cloud solutions. I value curiosity, clear communication,
+              disciplined problem-solving and lifelong learning.
+            </p>
+          </div>
+
+          <aside class="focus-panel">
+            <h3>Professional Focus</h3>
+            <ul class="focus-list">
+              <li>Secure and reliable cloud infrastructure</li>
+              <li>AWS architecture and service integration</li>
+              <li>Cloud troubleshooting and operations</li>
+              <li>Automation and Infrastructure as Code</li>
+              <li>Cost-aware technical decisions</li>
+              <li>Clear technical documentation</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Credentials</div>
+          <h2>AWS Certifications</h2>
+          <p>
+            Industry-recognized certifications supporting my foundation
+            in cloud concepts and AWS solution architecture.
+          </p>
+        </div>
+
+        <div class="cert-grid">
+          <article class="panel cert-card">
+            <div class="cert-mark">AWS CERTIFIED</div>
+            <h3>Solutions Architect – Associate</h3>
+            <p>Exam code: SAA-C03</p>
+            <p>
+              Designing secure, resilient, high-performing and
+              cost-optimized solutions on AWS.
+            </p>
+          </article>
+
+          <article class="panel cert-card">
+            <div class="cert-mark">AWS CERTIFIED</div>
+            <h3>Cloud Practitioner</h3>
+            <p>Exam code: CLF-C02</p>
+            <p>
+              Foundational knowledge of cloud concepts, AWS services,
+              security, pricing and the shared responsibility model.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertise">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Technical Foundation</div>
+          <h2>Areas of expertise</h2>
+          <p>
+            My focus areas across AWS, cloud infrastructure and
+            engineering practices. Practical proficiency grows through
+            implementation and testing.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3>Cloud Architecture</h3>
+            <p>
+              Designing cloud solutions with attention to availability,
+              security, scalability and cost.
+            </p>
+            <div class="skill-tags">
+              <span>AWS</span>
+              <span>S3</span>
+              <span>CloudFront</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3>Security & Networking</h3>
+            <p>
+              Understanding access control, network design, private
+              connectivity and secure cloud configurations.
+            </p>
+            <div class="skill-tags">
+              <span>IAM</span>
+              <span>VPC</span>
+              <span>Security</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3>Automation & Programming</h3>
+            <p>
+              Developing practical skills to automate tasks and manage
+              infrastructure consistently.
+            </p>
+            <div class="skill-tags">
+              <span>Python</span>
+              <span>AWS CLI</span>
+              <span>Terraform</span>
+            </div>
+          </article>
+        </div>
+
+        <p class="muted" style="margin-top: 18px; font-size: 13px;">
+          Python, Linux, AWS CLI and Terraform are ongoing learning areas.
+          I will add implementation examples as I complete them.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Practical Engineering</div>
+          <h2>Selected Projects</h2>
+          <p>
+            A growing portfolio of AWS implementations, architecture
+            decisions, testing and technical documentation.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-number">PROJECT 01</div>
+            <h3>AWS Static Website Hosting</h3>
+            <p>
+              A static portfolio website hosted using Amazon S3.
+              The project explores website configuration, object
+              permissions and static content delivery.
+            </p>
+            <span class="status">Hands-on practice</span>
+            <p class="project-note">
+              Project documentation and final configuration evidence
+              will be added as they are completed.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-number">PROJECT 02</div>
+            <h3>CloudFront Website Delivery</h3>
+            <p>
+              Exploring content delivery through CloudFront, including
+              HTTPS, origin configuration, access control and testing
+              with an S3 origin.
+            </p>
+            <span class="status">In progress</span>
+            <p class="project-note">
+              Final architecture and results will be documented after
+              deployment and verification.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-number">PROJECT 03</div>
+            <h3>Serverless Contact Application</h3>
+            <p>
+              A planned serverless application using API Gateway,
+              Python on Lambda, DynamoDB for message storage and
+              SNS for email notifications.
+            </p>
+            <span class="status">Planned</span>
+            <p class="project-note">
+              Implementation, security checks and end-to-end testing
+              remain future milestones.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="vision" id="vision">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Professional Direction</div>
+          <h2>Growing into the engineer I aspire to be.</h2>
+        </div>
+
+        <div class="vision-panel">
+          <p>
+            My goal is to become a dependable cloud engineer who can
+            design and build secure AWS solutions, troubleshoot problems
+            methodically and explain technical decisions clearly.
+          </p>
+
+          <p>
+            I am working towards that goal through hands-on projects,
+            continuous learning, practical experimentation and careful
+            documentation. Each project is an opportunity to turn
+            knowledge into evidence of what I can do.
+          </p>
+
+          <p>
+            I believe strong engineering is built through curiosity,
+            consistency, accountability and the willingness to keep
+            improving.
+          </p>
+        </div>
+
+       
+      
+      
+      <div class="professional-links">
+        <a href="https://github.com/KarthikaDharmaraj"target="_blank"rel="noopener noreferrer">
+           GitHub Profile
+        </a>
+
+       
+      </div>
+  
+
+        <p class="muted" style="margin-top: 12px; font-size: 12px;">
+          Update the email, LinkedIn and GitHub links before publishing.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Karthika Dharmaraj</p>
+    <p>Cloud Engineering · AWS · Continuous Learning</p>
+  </footer>
+
+</body>
+</html>
+
